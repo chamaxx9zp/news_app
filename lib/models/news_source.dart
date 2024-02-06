@@ -1,5 +1,3 @@
-// lib/models/news_source.dart
-
 class NewsSource {
   final String id;
   final String name;
@@ -18,4 +16,16 @@ class NewsSource {
     required this.language,
     required this.country,
   });
+
+  factory NewsSource.fromJson(Map<String, dynamic> json) {
+    return NewsSource(
+      id: json['id'],
+      name: json['name'],
+      description: json['description'],
+      url: json['url'],
+      category: json['category'],
+      language: json['language'],
+      country: json['country'],
+    );
+  }
 }
