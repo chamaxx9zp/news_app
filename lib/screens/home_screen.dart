@@ -1,4 +1,3 @@
-// lib/screens/home_screen.dart
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,25 +10,25 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter News App'),
+        title: Text('News App'),
       ),
       body: FutureBuilder(
-        future: newsProvider.fetchNews(),
+        future: newsProvider.fetchSources(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
+          } else if (snapshot.hasError || snapshot.data == null) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
             return ListView.builder(
-              itemCount: newsProvider.news.length,
+              itemCount: newsProvider.sources.length,
               itemBuilder: (context, index) {
-                final article = newsProvider.news[index];
+                final source = newsProvider.sources[index];
                 return ListTile(
-                  title: Text(article.title),
-                  subtitle: Text(article.description ?? 'No description available'),
+                  title: Text(source.name),
+                  subtitle: Text(source.description),
                   onTap: () {
-                    // Handle article tap
+                    // Handle source tap
                   },
                 );
               },

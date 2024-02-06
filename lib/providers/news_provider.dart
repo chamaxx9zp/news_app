@@ -1,17 +1,18 @@
-// lib/providers/news_provider.dart
-
 import 'package:flutter/material.dart';
-import '../models/news_article.dart';
+import '../models/news_source.dart';
 import '../services/news_service.dart';
+
 
 class NewsProvider with ChangeNotifier {
   final NewsService _newsService = NewsService();
-  List<NewsArticle> _news = [];
+  List<NewsSource> _sources = [];
 
-  List<NewsArticle> get news => _news;
+  List<NewsSource> get sources => _sources;
 
-  Future<void> fetchNews() async {
-    _news = await _newsService.getNews();
+  Future<List<NewsSource>> fetchSources() async {
+    _sources = await _newsService.getSources();
     notifyListeners();
+    return _sources; // Return the list of sources
   }
 }
+
