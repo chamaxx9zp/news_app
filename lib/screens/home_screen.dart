@@ -1,25 +1,23 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/news_provider.dart';
+
+import '../providers/news_provider.dart'; // Import your NewsProvider
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final newsProvider = Provider.of<NewsProvider>(context);
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('News App'),
+        title: Text('News Sources'),
       ),
-      body: FutureBuilder(
-        future: newsProvider.fetchSources(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
+      body: Consumer<NewsProvider>(
+        builder: (context, newsProvider, _) {
+          if (newsProvider.sources.isEmpty) {
+            // If sources list is empty, fetch data
+            newsProvider.fetchSources();
             return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError || snapshot.data == null) {
-            return Center(child: Text('Error: ${snapshot.error}'));
           } else {
+            // If sources list is not empty, display data
             return ListView.builder(
               itemCount: newsProvider.sources.length,
               itemBuilder: (context, index) {
@@ -28,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                   title: Text(source.name),
                   subtitle: Text(source.description),
                   onTap: () {
-                    // Handle source tap
+                    // Handle onTap event
                   },
                 );
               },
