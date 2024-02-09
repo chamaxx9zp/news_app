@@ -5,7 +5,7 @@ List<CategoryModel> getCategories() {
   CategoryModel categoryModel = new CategoryModel();
 
   categoryModel.categoryName = "Business";
-  categoryModel.image = "images/bussiness.webp";
+  categoryModel.image = "images/general.webp";
   category.add(categoryModel);
   categoryModel = new CategoryModel();
 
