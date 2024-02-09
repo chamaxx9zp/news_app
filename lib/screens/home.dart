@@ -63,7 +63,7 @@ class _HomeState extends State<Home> {
           children: [
             Text("Global"),
             Text(
-              "News",
+              " News",
               style: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold),
             )
           ],
@@ -101,7 +101,7 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Breaking News!",
+                            "News Headlines!",
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -115,8 +115,8 @@ class _HomeState extends State<Home> {
                               "View All",
                               style: TextStyle(
                                   decoration: TextDecoration.underline,
-                                  decorationColor: Colors.blue,
-                                  color: Colors.blue,
+                                  decorationColor: Colors.purple,
+                                  color: Colors.purple,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16.0),
                             ),
@@ -171,8 +171,8 @@ class _HomeState extends State<Home> {
                               "View All",
                               style: TextStyle(
                                   decoration: TextDecoration.underline,
-                                  decorationColor: Colors.blue,
-                                  color: Colors.blue,
+                                  decorationColor: Colors.purple,
+                                  color: Colors.purple,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16.0),
                             ),
@@ -242,7 +242,7 @@ class _HomeState extends State<Home> {
         activeIndex: activeIndex,
         count: 5,
         effect: SlideEffect(
-            dotWidth: 15, dotHeight: 15, activeDotColor: Colors.blue),
+            dotWidth: 15, dotHeight: 15, activeDotColor: Colors.purple),
       );
 }
 
